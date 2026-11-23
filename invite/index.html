@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>LifeLegacy invitation (trial)</title>
+<style>
+  body { font-family: system-ui, sans-serif; font-size: 1.25rem; line-height: 1.5; max-width: 36rem; margin: 2rem auto; padding: 0 1rem; color: #111; }
+  a.button { display: inline-block; font-size: 1.3rem; padding: 1rem 1.5rem; background: #0b5394; color: #fff; border-radius: .5rem; text-decoration: none; }
+  .small { font-size: 1rem; color: #444; }
+</style>
+</head>
+<body>
+<h1>You have been invited to LifeLegacy</h1>
+<p>Someone has asked you to help look after their gift records.</p>
+<p><a class="button" id="open" href="#">Open in LifeLegacy</a></p>
+<p class="small">If nothing happens, the app may not be installed yet. Trial build: ask the person who invited you for the test app.</p>
+<script>
+  // The token is after '#', so it never reaches this server or its logs.
+  var t = new URLSearchParams(location.hash.slice(1)).get('t') || '';
+  document.getElementById('open').href = 'lifelegacy://invite?t=' + encodeURIComponent(t);
+</script>
+</body>
+</html>

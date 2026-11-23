@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Confirm your email (trial)</title>
+<style>
+  body { font-family: system-ui, sans-serif; font-size: 1.25rem; line-height: 1.5; max-width: 36rem; margin: 2rem auto; padding: 0 1rem; color: #111; }
+  button { font-size: 1.3rem; padding: 1rem 1.5rem; background: #0b5394; color: #fff; border: 0; border-radius: .5rem; }
+</style>
+</head>
+<body>
+<h1>Confirm your email address</h1>
+<p>Press the button to confirm this address for LifeLegacy notices.</p>
+<button id="confirm">Confirm</button>
+<p id="result" role="status"></p>
+<script>
+  // A button (not an automatic call) because mail scanners follow links.
+  // SUPABASE_URL comes from config/app_config.json when the site is built.
+  var SUPABASE_URL = '<SUPABASE_URL>';
+  var EDGE_URL = SUPABASE_URL.indexOf('https://') === 0
+    ? SUPABASE_URL.replace(/\/+$/, '') + '/functions/v1/email-change-confirm' : '';
+  var t = new URLSearchParams(location.hash.slice(1)).get('t') || '';
+  document.getElementById('confirm').onclick = function () {
+    if (!EDGE_URL) { document.getElementById('result').textContent = 'Email confirmation is not set up on this site yet.'; return; }
+    fetch(EDGE_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token: t }) })
+      .then(function (r) { document.getElementById('result').textContent = r.ok ? 'Thank you, your address is confirmed.' : 'Sorry, this link has expired or was already used.'; })
+      .catch(function () { document.getElementById('result').textContent = 'Sorry, something went wrong. Please try again.'; });
+  };
+</script>
+</body>
+</html>

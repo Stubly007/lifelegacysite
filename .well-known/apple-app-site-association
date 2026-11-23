@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["<APPLE_TEAM_ID>.<IOS_BUNDLE_ID>"],
+        "components": [
+          { "/": "/invite*", "comment": "Invite links (token after #, never sent to the server)" },
+          { "/": "/confirm-email*", "exclude": true, "comment": "Confirm stays in the browser: a button POSTs the token" }
+        ]
+      }
+    ]
+  }
+}
