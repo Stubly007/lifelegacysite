@@ -2034,6 +2034,9 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 cupertino_ui
 listen
 material_ui
+path_provider
+path_provider_android
+path_provider_foundation
 path_provider_linux
 path_provider_platform_interface
 shared_preferences
@@ -21434,6 +21437,7 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 --------------------------------------------------------------------------------
+jni_flutter
 jni_util
 
 Copyright 2026, the Dart project authors.
